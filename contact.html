@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>יצירת קשר - EcomPro Digital</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- משתנים ועיצוב זהה לשאר האתר --- */
+        :root {
+            --gold-solid-bright: #D4AF37;
+            --blue-electric-gradient: linear-gradient(135deg, #003366 0%, #0047AB 100%);
+            --text-main: #000000;
+            --text-soft: #333333;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Heebo', sans-serif;
+            background: #ffffff;
+            color: var(--text-main);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container {
+            max-width: 600px; /* טופס צר יותר למראה אלגנטי */
+            margin: 0 auto;
+            padding: 0 24px;
+            width: 100%;
+        }
+
+        /* --- כותרת עליונה --- */
+        header {
+            text-align: center;
+            padding: 60px 0 40px;
+            border-bottom: 4px solid var(--gold-solid-bright);
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--text-main);
+            margin-bottom: 10px;
+        }
+
+        p.intro {
+            color: var(--text-soft);
+            font-size: 1.1rem;
+        }
+
+        /* --- עיצוב הטופס --- */
+        .contact-form {
+            background: #fff;
+            padding: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: #000;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            font-family: 'Heebo', sans-serif;
+            font-size: 1rem;
+            background: #fcfcfc;
+            transition: all 0.3s;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--gold-solid-bright);
+            background: #fff;
+            box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.1);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        /* --- כפתור שליחה (אותו סגנון כמו בדף הבית) --- */
+        .submit-btn {
+            display: block;
+            width: 100%;
+            background: var(--blue-electric-gradient);
+            color: white;
+            padding: 18px;
+            font-size: 1.2rem;
+            font-weight: 800;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 15px 30px rgba(0, 51, 102, 0.3);
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px rgba(0, 51, 102, 0.4);
+        }
+
+        /* --- כפתור חזרה --- */
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 30px;
+            color: #888;
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin-bottom: 50px;
+        }
+        
+        .back-link:hover {
+            color: var(--gold-solid-bright);
+            text-decoration: underline;
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 2rem; }
+            .container { padding: 0 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1>צור קשר</h1>
+            <p class="intro">יש לך שאלות? הצוות שלנו כאן בשבילך.</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <form action="https://formsubmit.co/YOUR_EMAIL@GMAIL.COM" method="POST" class="contact-form">
+            
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_next" value="https://yourwebsite.com/thanks.html"> 
+            <input type="hidden" name="_subject" value="פנייה חדשה מאתר EcomPro!">
+
+            <div class="form-group">
+                <label for="name">שם מלא</label>
+                <input type="text" id="name" name="name" placeholder="השם שלך..." required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">כתובת מייל</label>
+                <input type="email" id="email" name="email" placeholder="המייל שלך לחזרה..." required>
+            </div>
+
+            <div class="form-group">
+                <label for="message">הודעה</label>
+                <textarea id="message" name="message" placeholder="כיצד נוכל לעזור?" required></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn">שלח הודעה >></button>
+        </form>
+
+        <a href="index.html" class="back-link">← חזרה לדף הבית</a>
+    </main>
+
+</body>
+</html>
