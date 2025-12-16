@@ -3,297 +3,285 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>השיטה למשווקים - EcomSystem</title>
+    <title>EcomSystem - המודל החדש</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700;800&family=Frank+Ruhl+Libre:wght@700;900&display=swap" rel="stylesheet">
 
     <style>
         /* --- משתנים ועיצוב יוקרתי --- */
         :root {
-            --gold-shiny-gradient: linear-gradient(45deg, #B88A44, #FBE7B2, #B88A44);
-            --gold-solid-bright: #D4AF37;
-            --blue-electric-gradient: linear-gradient(135deg, #003366 0%, #0047AB 100%);
-            --text-main: #1a1a1a;
-            --text-soft: #333333;
-            --white-card: #ffffff;
-            --bg-color: #fcfcfc;
-            --shadow-pop: 0 10px 30px -5px rgba(0,0,0,0.08);
-            --footer-bg: #111111;
-            --footer-text: #888888;
+            --gold-accent: #C5A059;
+            --gold-light: #F3Ebd6;
+            --dark-navy: #0F172A;
+            --text-main: #334155;
+            --bg-color: #F1F5F9;
+            --card-shadow: 0 20px 40px -5px rgba(0,0,0,0.1);
+            --cta-gradient: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
-            font-family: 'Heebo', sans-serif;
-            background: var(--bg-color);
+            font-family: 'Assistant', sans-serif;
+            background-color: var(--bg-color);
             color: var(--text-main);
-            line-height: 1.8;
-            overflow-x: hidden;
+            line-height: 1.7;
             display: flex;
             flex-direction: column;
             min-height: 100vh;
         }
 
-        h1, h2, h3 {
-            font-family: 'Playfair Display', serif;
-            font-weight: 800;
-            color: #000;
-            line-height: 1.2;
-            letter-spacing: -0.5px;
+        /* --- קונטיינר מרכזי - מראה של "מסמך" --- */
+        .page-wrapper {
+            max-width: 800px;
+            margin: 40px auto;
+            background: #ffffff;
+            box-shadow: var(--card-shadow);
+            border-radius: 12px;
+            overflow: hidden; /* כדי שהתמונות לא יברחו */
         }
-        
-        h2 { margin-top: 20px; }
 
+        .content-padding {
+            padding: 40px 50px;
+        }
+
+        /* --- טיפוגרפיה --- */
+        h1, h2, h3 {
+            font-family: 'Assistant', sans-serif; /* שינוי לפונט מודרני יותר */
+            color: var(--dark-navy);
+            line-height: 1.2;
+            font-weight: 800;
+        }
+
+        h1 { font-size: 2.5rem; margin-bottom: 15px; letter-spacing: -1px; }
+        h2 { font-size: 2rem; margin-top: 40px; margin-bottom: 20px; }
+        
         p { 
             font-size: 1.15rem; 
-            color: var(--text-soft);
-            font-weight: 400;
-            margin-bottom: 20px;
+            margin-bottom: 20px; 
+            color: #475569;
         }
 
-        strong { font-weight: 700; color: #000; background: rgba(212, 175, 55, 0.1); padding: 0 3px; }
-        
-        .container {
-            max-width: 750px;
-            margin: 0 auto;
-            padding: 0 20px;
+        /* מרקר צהוב להדגשה */
+        .highlight {
+            background: linear-gradient(120deg, rgba(255, 230, 0, 0.3) 0%, rgba(255, 230, 0, 0.3) 100%);
+            background-repeat: no-repeat;
+            background-size: 100% 40%;
+            background-position: 0 88%;
+            padding: 0 2px;
+            font-weight: 700;
+            color: #000;
         }
 
         /* --- Hero Section --- */
         .hero-section {
-            padding: 70px 0 40px;
             text-align: center;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 40px;
         }
 
-        .hero-label {
+        .top-badge {
             display: inline-block;
-            background: #000;
-            color: #fff;
-            padding: 5px 15px;
-            font-size: 0.8rem;
-            font-weight: 700;
-            letter-spacing: 1px;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-        }
-
-        .hero-headline {
-            font-size: 2.8rem;
-            margin-bottom: 20px;
-            color: #000;
-        }
-
-        .hero-subheadline {
-            font-size: 1.35rem;
-            font-weight: 300;
-            color: #444;
-            line-height: 1.4;
-        }
-
-        .divider {
-            width: 80px;
-            background: var(--gold-shiny-gradient);
-            margin: 50px auto;
-            border-radius: 4px;
-        }
-
-        /* --- Content Sections --- */
-        .content-section { margin-bottom: 60px; }
-        .section-title { font-size: 2.2rem; margin-bottom: 25px; color: #003366; }
-        
-        .story-box {
-            background: #fff;
-            border-left: 4px solid var(--gold-solid-bright);
-            padding: 20px 30px;
-            margin: 30px 0;
-            font-style: italic;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.03);
-            color: #555;
-        }
-
-        /* --- Author Section --- */
-        .author-section {
-            background: #000;
-            color: #fff;
-            padding: 40px;
-            border-radius: 10px;
-            margin: 50px 0;
-        }
-        
-        .author-section p { color: #ccc; }
-        .author-section strong { background: none; color: var(--gold-solid-bright); }
-        .author-section h2 { color: #fff; }
-
-        /* --- CTA Section --- */
-        .cta-section {
-            background: #fff;
-            padding: 60px 24px 80px;
-            text-align: center;
-            margin-top: 40px;
-            border-top: 4px solid var(--gold-solid-bright);
-            box-shadow: 0 -20px 50px rgba(0,0,0,0.03);
-        }
-
-        .cta-button {
-            display: inline-block;
-            background: var(--blue-electric-gradient);
-            color: white;
-            padding: 25px 40px;
-            font-size: 1.4rem;
-            font-weight: 800;
-            text-decoration: none;
+            background: #f1f5f9;
+            color: var(--dark-navy);
+            padding: 6px 16px;
             border-radius: 50px;
-            box-shadow: 0 15px 40px rgba(0, 51, 102, 0.35);
-            transition: all 0.3s ease;
-            width: 100%;
-            max-width: 600px;
-            line-height: 1.2;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 25px;
+            border: 1px solid #cbd5e1;
         }
 
-        .cta-button:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 25px 50px rgba(0, 51, 102, 0.5);
+        .hero-sub {
+            font-size: 1.3rem;
+            color: #64748b;
+            font-weight: 400;
+            max-width: 90%;
+            margin: 0 auto;
+        }
+
+        /* --- Story Box (הסיפור הכואב) --- */
+        .story-box {
+            background: #fff9ed; /* צהוב בהיר מאוד */
+            border-right: 4px solid var(--gold-accent);
+            padding: 25px 30px;
+            margin: 30px 0;
+            border-radius: 8px;
+            position: relative;
         }
         
-        .cta-subtext {
+        .story-box p { margin-bottom: 10px; font-size: 1.1rem; color: #5a4a25; }
+        .story-box strong { color: #000; }
+
+        /* --- רשימת היתרונות --- */
+        .bullet-list {
+            list-style: none;
             margin-top: 20px;
-            font-size: 0.95rem;
-            color: #666;
+        }
+        
+        .bullet-list li {
+            margin-bottom: 18px;
+            padding-right: 35px;
+            position: relative;
+            font-size: 1.15rem;
+            font-weight: 500;
         }
 
-        /* Footer */
-        .site-footer {
-            background: var(--footer-bg);
-            color: var(--footer-text);
-            padding: 40px 20px;
+        .bullet-list li::before {
+            content: '✓';
+            position: absolute;
+            right: 0;
+            top: 2px;
+            color: var(--gold-accent);
+            font-weight: 900;
+            font-size: 1.3rem;
+        }
+
+        /* --- אזור הסמכות (כהה) --- */
+        .author-section {
+            background: var(--dark-navy);
+            color: #fff;
+            padding: 50px;
+            margin: 50px -50px; /* שובר את הגבולות */
             text-align: center;
+        }
+
+        .author-section h2 { color: #fff; margin-top: 0; }
+        .author-section p { color: #cbd5e1; }
+        .author-section strong { color: var(--gold-accent); }
+
+        /* --- כפתור ו-CTA --- */
+        .cta-box {
+            text-align: center;
+            padding: 30px 0;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            background: var(--cta-gradient);
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 700;
+            padding: 22px 50px;
+            border-radius: 12px;
+            text-decoration: none;
+            box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.4);
+            transition: transform 0.2s, box-shadow 0.2s;
+            width: 100%;
+            border: 2px solid transparent;
+            animation: pulse 2s infinite;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 30px -10px rgba(15, 23, 42, 0.5);
+            background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
+        }
+
+        .cta-btn span {
+            display: block;
             font-size: 0.9rem;
-            border-top: 1px solid #333;
+            font-weight: 400;
+            opacity: 0.8;
+            margin-top: 5px;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(15, 23, 42, 0.4); }
+            70% { box-shadow: 0 0 0 15px rgba(15, 23, 42, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(15, 23, 42, 0); }
+        }
+
+        /* --- Footer --- */
+        .footer {
+            text-align: center;
+            font-size: 0.85rem;
+            color: #94a3b8;
+            padding: 30px 0;
             margin-top: auto;
         }
-
-        .footer-links a {
-            color: #cccccc;
-            text-decoration: none;
-            margin: 0 10px;
-        }
-
-        @media (max-width: 600px) {
-            .hero-headline { font-size: 2.2rem; }
-            .section-title { font-size: 1.8rem; }
-            .cta-button { font-size: 1.2rem; padding: 20px 30px; }
-        }
         
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        .footer a { color: #64748b; text-decoration: none; margin: 0 10px; }
+
+        /* --- מובייל --- */
+        @media (max-width: 650px) {
+            .page-wrapper { margin: 0; border-radius: 0; }
+            .content-padding { padding: 30px 20px; }
+            h1 { font-size: 2rem; }
+            .hero-sub { font-size: 1.1rem; }
+            .author-section { margin: 40px -20px; padding: 40px 20px; }
+            .cta-btn { font-size: 1.2rem; padding: 18px 20px; }
         }
-        .fade-in.visible { opacity: 1; transform: translateY(0); }
     </style>
 </head>
 <body>
 
-    <main class="container">
-        <header class="hero-section fade-in">
-            <span class="hero-label">למשווקים, קמפיינרים ופרילנסרים בלבד</span>
-            <h1 class="hero-headline">למה הלקוחות שלך יוצאים לפנסיה מוקדם מהקמפיינים שאתה מנהל, ואתה נשאר עם ה"פירורים"?</h1>
-            <p class="hero-subheadline">האמת המכאיבה על מלכודת הפרילנסר, והדרך היחידה להפוך את הידע שלך בשיווק לנכס שנמצא בבעלותך ומביא לך הכנסה 24/7.</p>
-        </header>
-
-        <div class="divider"></div>
-
-        <section class="content-section fade-in">
-            <h2 class="section-title">זאת תמונת מצב מאוד מוכרת אצל משווקים דיגיטליים מוכשרים...</h2>
+    <div class="page-wrapper">
+        <div class="content-padding">
             
-            <p>בהתחלה זה מרגיש כמו חופש אמיתי: אין בוס, יש לקוחות, ויש כסף.</p>
-            <p>אבל תוך זמן קצר אתה מגלה את האמת.
-לא יצאת ממירוץ העכברים - רק שדרגת אותו.</p>
+            <header class="hero-section">
+                <span class="top-badge">למשווקים, קמפיינרים ופרילנסרים בלבד</span>
+                <h1>למה הלקוחות שלך יוצאים לפנסיה מהקמפיינים שאתה מנהל, <span style="color: var(--gold-accent);">ואתה נשאר עם הפירורים?</span></h1>
+                <p class="hero-sub">האמת המכאיבה על מלכודת הריטיינר, והדרך להפוך את הידע שלך בשיווק לנכס שנמצא בבעלותך 24/7.</p>
+            </header>
+
+            <section>
+                <h2>זאת תמונת מצב מאוד מוכרת...</h2>
+                <p>בהתחלה זה מרגיש כמו חופש: אין בוס, יש לקוחות, ויש כסף. אבל מהר מאוד אתה מגלה שלא יצאת ממירוץ העכברים - <strong>רק שדרגת אותו.</strong></p>
+                
+                <div class="story-box">
+                    <p><strong>יום חמישי, 20:30 בערב.</strong> אתה מול המחשב. הלקוח (זה שמשלם לך ריטיינר בסיסי) שולח הודעה:</p>
+                    <p style="font-style: italic;">"למה הלידים לא נכנסים? המוקד עומד ריק מחר."</p>
+                    <p>אתה פותח Ads Manager, בודק, מתקן, בלחץ. באותו רגע האסימון נופל: <span class="highlight">אתה לא בעל עסק. אתה שכיר של הרבה בוסים שונים.</span></p>
+                </div>
+
+                <p>האבסורד הוא שאתה זה שמייצר להם את הכסף. בלי הקמפיינים שלך? העסק שלהם שקוף.</p>
+                <p>הבעיה היא שאתה <strong>משכיר</strong> את הנכס הכי יקר בעולם (היכולת להביא לקוחות) תמורת "שכירות חודשית", במקום להשתמש בו כדי להיות הבעלים של התוצאה.</p>
+            </section>
             
-            <div class="story-box">
-                "יום חמישי, 20:30 בערב. אתה יושב מול המחשב. הלקוח הגדול שלך (זה שמשלם לך ריטיינר של 2,500 ש"ח) בדיוק שלח הודעה עצבנית בוואטסאפ: 'למה הלידים לא נכנסים? המוקד עומד ריק מחר'."
-                <br><br>
-                אתה פותח את מנהל המודעות, מעלה קמפיין מאפס, משנה קופי, יושב עצבני.
+            <section>
+                <h2>תשנה את הדיסקט.</h2>
+                <p>יש לך כבר את הידע. יש לך את היכולת. במקום לעבוד בשביל הלקוח – תתחיל לעבוד בשביל עצמך.</p>
+                <p>המודל החדש (EcomSystem) הוא פשוט: אנחנו מזרימים תנועה למוצרים שכבר מוכחים כמכונות מזומנים – <span class="highlight">וגוזרים את הרווח ישירות לכיס.</span></p>
+            </section>
+
+            <div class="author-section">
+                <h2>מי עומד מאחורי השיטה?</h2>
+                <p>הכירו את <strong>גיא נוה</strong>, סמנכ"ל רשת השותפים הגדולה בישראל.</p>
+                <p>גיא לא מלמד תיאוריה. הוא האיש שרואה את המספרים האמיתיים. הוא רואה בדיוק מי הם אותם 50 משווקים בישראל שעושים 6 ספרות בחודש בשקט, והוא החליט לחשוף את הפרוטוקול המדויק שלהם.</p>
+            </div>
+
+            <section>
+                <h2>מה מחכה לכם בהדרכה?</h2>
+                <p>זו לא הרצאת מוטיבציה. זו חשיפה טכנית של השיטה:</p>
+                <ul class="bullet-list">
+                    <li><strong>אסטרטגיית ה-Micro-Funnel:</strong> איך לבנות משפכים שממירים תנועה קרה לכסף.</li>
+                    <li><strong>בחירת הצעות מנצחות:</strong> איך לזהות את ה"יהלומים" שעושים המרות גבוהות.</li>
+                    <li><strong>בונוס KITA (בשווי 3,500 ₪):</strong> תוכנית להטמעת "מערכת הפעלה" של יזם – במתנה.</li>
+                </ul>
+            </section>
+
+            <div class="cta-box">
+                <h2>מוכנים לצאת לדרך?</h2>
+                <p>אתה יכול להמשיך לרדוף אחרי לקוחות, או שאתה יכול לקחת את המושכות.</p>
                 <br>
-                באותו רגע אתה קולט: <strong>אתה לא 'בעל עסק'. אתה עובד אצל הרבה בוסים שונים.</strong>
-            </div>  
-
-            <p>האבסורד הכי גדול? אתה זה שמייצר להם את הכסף. אתה יודע להביא תנועה. אתה יודע לכתוב דפי מכירה. אתה יודע לשכנע.</p>
-            <p>הם לוקחים את הכסף הגדול. אתה מקבל שכר טרחה + מע"מ.</p>
-
-            <p><strong>תעצור רגע ותחשוב על זה.</strong></p>
-            <p>הכוח האמיתי נמצא בידיים <strong>שלך</strong>. בלי הקמפיינים שלך? העסק שלהם שקוף. בלי המילים שלך? אף אחד לא קונה.</p>
-            <p>הבעיה היא לא ביכולות שלך. הבעיה היא שאתה <strong>משכיר</strong> את הנכס הכי יקר בעולם העסקים (היכולת להביא לקוחות) תמורת "שכירות חודשית", במקום להשתמש בו כדי להיות הבעלים של התוצאה.</p>
-        </section>
-        </section>
-        </section>
-
-        <section class="content-section fade-in">
-            <h2 class="section-title">תשנה את הדיסקט.</h2>
-            <p>אתה כבר יודע לעשות כסף באינטרנט. יש לך את הידע. השאלה היא מה אתה עושה איתו. במקום לעבוד בשביל הלקוח – תתחיל לעבוד בשביל עצמך באמת.</p>
-            <p><strong>תתחיל לקחת אחוזים שווים מהמכירות.</strong></p>
-            <p>זהו מודל ה-Affiliate Marketing (שיווק שותפים) בגרסת 2026 למקצוענים. אנחנו מזרימים תנועה למוצרים שכבר מוכחים כמכונות מזומנים – וגוזרים את הרווח ישירות לכיס.</p>
-        </section>
-
-        <section class="author-section fade-in">
-            <h2>מי עומד מאחורי השיטה?</h2>
-            <p>הכירו את <strong>גיא נוה</strong>. סמנכ"ל "באקט" (Bucket) – רשת שיווק השותפים הגדולה והמובילה בישראל.</p>
-            <p>גיא לא סתם "מלמד" שיווק. הוא האיש שרואה את המספרים האמיתיים מאחורי הקלעים. הוא רואה בדיוק מי הם אותם 50 משווקים בישראל שעושים 6 ספרות בחודש בשקט, והוא יודע בדיוק מה הם עושים ומה ההבדל בינם לבין השאר.</p>
-            <p>אחרי שראה אלפי משווקים נכשלים כי הם עבדו "לפי הספר הישן", הוא החליט לחשוף את <strong>הפרוטוקול המדויק</strong> של הטופ-משווקים.</p>
-        </section>
-
-        <section class="content-section fade-in">
-            <h2 class="section-title">מה מחכה לכם בהדרכה?</h2>
-            <p>גיא הקליט הדרכה מלאה וממוקדת שחושפת את כל הקלפים. זו לא תיאוריה, אלא פרקטיקה מעשית בלבד.</p>
-            <ul style="list-style: none; margin-top: 20px;">
-                <li style="margin-bottom: 15px;">✅ <strong>אסטרטגיית ה-Micro-Funnel:</strong> איך לבנות משפכים שממירים תנועה קרה לרוכשים.</li>
-                <li style="margin-bottom: 15px;">✅ <strong>בחירת הצעות מנצחות:</strong> איך לזהות את ה"יהלומים" במערכת של באקט.</li>
-                <li style="margin-bottom: 15px;">✅ <strong>בונוס KITA (בשווי 3,500 ₪)</strong>למה יש משווקים שיודעים פחות ממך אבל עושים פי 10 כסף? כי הראש שלהם עובד אחרת. קיטה היא תוכנית שתתקין לך "מערכת הפעלה" של יזם: משמעת ברזל, ניהול סיכונים ויכולת התמדה - בחינם.</li>
-            </ul>
-        </section>
-
-        <div class="divider"></div>
-
-        <section class="cta-section fade-in">
-            <h2 style="font-size: 2.2rem; margin-bottom: 15px;">מוכנים לראות איך זה עובד?</h2>
-            <p>אתה יכול להמשיך לרדוף אחרי לקוחות, או שאתה יכול לקחת את המושכות לידיים.</p>
-            
-            <a href="https://go.scrmgo.com/24MJRPS5/2NXT8N4/" class="cta-button">
-                לחצו כאן למעבר להדרכה המלאה וקבלת כל הפרטים >>
-            </a>
-            <div class="cta-subtext">
-                <p>הכפתור יעביר אותך לאתר הרשמי לצפייה בהסבר המלא.</p>
+                <a href="https://go.scrmgo.com/24MJRPS5/2NXT8N4/" class="cta-btn">
+                    לחצו כאן למעבר להדרכה המלאה >>
+                    <span>(הכפתור יעביר אתכם לאתר הרשמי של ההדרכה)</span>
+                </a>
             </div>
-        </section>
-    </main>
 
-    <footer class="site-footer">
-        <div class="container">
-            <div class="footer-links">
-                <a href="terms.html">תנאי שימוש</a>
-                <a href="privacy.html">מדיניות פרטיות</a>
-                <a href="contact.html">יצירת קשר</a>
-            </div>
-            <p style="margin-top: 20px; font-size: 0.8rem; color: #888888;">
-                כל הזכויות שמורות © 2025 EcomSystem
-            </p>
         </div>
-    </footer>
+    </div>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) entry.target.classList.add("visible");
-                });
-            }, { threshold: 0.1 }); 
-            
-            document.querySelectorAll(".fade-in").forEach(el => observer.observe(el));
-        });
-    </script>
+    <footer class="footer">
+        <p style="margin-top: 10px;">
+            <a href="./terms.html">תנאי שימוש</a> | <a href="./privacy.html">מדיניות פרטיות</a> | <a href="./contact.html">צור קשר</a>
+        </p>
+        <p>כל הזכויות שמורות © 2025 EcomSystem</p>
+    </footer>
 
 </body>
 </html>
